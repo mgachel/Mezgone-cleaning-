@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% block title %}Mezgone Cleaning Services{% endblock %}
+{% block content %}
+    <!-- Hero -->
+    <section class="h-screen grid place-items-center p-8 bg-gradient-to-br from-light-blue to-aqua">
+      <div class="text-center max-w-[100rem] mx-auto">
+        <h1 class="text-6xl font-heading text-foreground mb-8">Professional Cleaning Services You Can Trust</h1>
+        <p class="text-xl font-paragraph text-foreground/80 mb-12 max-w-3xl mx-auto">
+          Experience the difference with Mezgone Cleaning Services. We provide reliable residential and commercial cleaning solutions with a focus on quality, trust, and customer satisfaction.
+        </p>
+        <div class="flex gap-4 justify-center flex-wrap">
+          <a href="{% url 'booking' %}" class="btn btn-primary px-8 py-4 text-lg">Book a Cleaning</a>
+          <a href="{% url 'booking' %}" class="btn btn-outline px-8 py-4 text-lg">Get a Free Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="py-24 px-8 bg-white">
+      <div class="max-w-[100rem] mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-heading text-foreground mb-6">Our Cleaning Services</h2>
+          <p class="text-lg font-paragraph text-foreground/70 max-w-3xl mx-auto">
+            From residential homes to commercial spaces, we provide comprehensive cleaning solutions tailored to your needs.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-light-blue rounded-full flex items-center justify-center mx-auto mb-6">
+              <i data-lucide="check-circle" class="w-8 h-8 text-primary"></i>
+            </div>
+            <h3 class="text-xl font-heading text-foreground mb-4">Residential Cleaning</h3>
+            <p class="font-paragraph text-foreground/70 mb-6">Keep your home spotless with our regular or one-time residential cleaning services.</p>
+            <a href="{% url 'services' %}" class="btn btn-outline">Learn More</a>
+          </div>
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-light-green rounded-full flex items-center justify-center mx-auto mb-6">
+              <i data-lucide="check-circle" class="w-8 h-8 text-secondary"></i>
+            </div>
+            <h3 class="text-xl font-heading text-foreground mb-4">Commercial Cleaning</h3>
+            <p class="font-paragraph text-foreground/70 mb-6">Professional office and commercial space cleaning to maintain a productive environment.</p>
+            <a href="{% url 'services' %}" class="btn btn-outline">Learn More</a>
+          </div>
+          <div class="card p-8 text-center">
+            <div class="w-16 h-16 bg-aqua rounded-full flex items-center justify-center mx-auto mb-6">
+              <i data-lucide="check-circle" class="w-8 h-8 text-primary"></i>
+            </div>
+            <h3 class="text-xl font-heading text-foreground mb-4">Deep Cleaning</h3>
+            <p class="font-paragraph text-foreground/70 mb-6">Comprehensive deep cleaning services for a thorough and detailed clean.</p>
+            <a href="{% url 'services' %}" class="btn btn-outline">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Benefits (static fallback) -->
+    <section class="py-24 px-8 bg-light-blue">
+      <div class="max-w-[100rem] mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-heading text-foreground mb-6">Why Choose Mezgone?</h2>
+          <p class="text-lg font-paragraph text-foreground/70 max-w-3xl mx-auto">We're committed to delivering exceptional cleaning services that exceed your expectations.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+              <i data-lucide="clock" class="w-8 h-8 text-primary"></i>
+            </div>
+            <h3 class="text-xl font-heading text-foreground mb-4">Fast Service</h3>
+            <p class="font-paragraph text-foreground/70">Quick and efficient cleaning services that fit your schedule</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+              <i data-lucide="users" class="w-8 h-8 text-primary"></i>
+            </div>
+            <h3 class="text-xl font-heading text-foreground mb-4">Trained Staff</h3>
+            <p class="font-paragraph text-foreground/70">Professional, experienced, and fully insured cleaning specialists</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+              <i data-lucide="leaf" class="w-8 h-8 text-primary"></i>
+            </div>
+            <h3 class="text-xl font-heading text-foreground mb-4">Eco-Friendly Products</h3>
+            <p class="font-paragraph text-foreground/70">Safe, non-toxic products that protect your family and environment</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+              <i data-lucide="award" class="w-8 h-8 text-primary"></i>
+            </div>
+            <h3 class="text-xl font-heading text-foreground mb-4">100% Satisfaction</h3>
+            <p class="font-paragraph text-foreground/70">We guarantee your complete satisfaction or we'll make it right</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials (static, rotates with JS) -->
+    <section class="py-24 px-8 bg-white">
+      <div class="max-w-[100rem] mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-heading text-foreground mb-6">What Our Clients Say</h2>
+          <p class="text-lg font-paragraph text-foreground/70 max-w-3xl mx-auto">Don't just take our word for it. Here's what our satisfied customers have to say about our services.</p>
+        </div>
+        <div class="max-w-4xl mx-auto">
+          <div class="card p-12 text-center">
+            <div class="[&>i]:text-yellow-400 [&>i]:fill-current flex justify-center mb-6">
+              <i data-lucide="star" class="w-6 h-6"></i>
+              <i data-lucide="star" class="w-6 h-6"></i>
+              <i data-lucide="star" class="w-6 h-6"></i>
+              <i data-lucide="star" class="w-6 h-6"></i>
+              <i data-lucide="star" class="w-6 h-6"></i>
+            </div>
+            <blockquote data-testimonial class="text-xl font-paragraph text-foreground/80 mb-8 italic">
+              "Mezgone Cleaning Services exceeded our expectations! Their attention to detail and professionalism is outstanding. Our office has never looked better."
+            </blockquote>
+            <blockquote data-testimonial class="text-xl font-paragraph text-foreground/80 mb-8 italic hidden">
+              "The team was punctual and very thorough. Highly recommend their deep cleaning service!"
+            </blockquote>
+            <blockquote data-testimonial class="text-xl font-paragraph text-foreground/80 mb-8 italic hidden">
+              "Excellent service at a fair price. We'll definitely book again."
+            </blockquote>
+            <div class="flex justify-center mt-8 gap-2">
+              <button data-testimonial-dot class="w-3 h-3 rounded-full bg-primary"></button>
+              <button data-testimonial-dot class="w-3 h-3 rounded-full bg-gray-300"></button>
+              <button data-testimonial-dot class="w-3 h-3 rounded-full bg-gray-300"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 px-8 bg-light-green">
+      <div class="max-w-[100rem] mx-auto text-center">
+        <h2 class="text-4xl font-heading text-foreground mb-6">Ready to Experience the Mezgone Difference?</h2>
+        <p class="text-lg font-paragraph text-foreground/70 mb-12 max-w-3xl mx-auto">Join thousands of satisfied customers who trust Mezgone for their cleaning needs. Get your free quote today!</p>
+        <div class="flex gap-4 justify-center flex-wrap">
+          <a href="{% url 'booking' %}" class="btn btn-primary px-8 py-4 text-lg">Get Free Quote</a>
+          <a href="{% url 'contact' %}" class="btn btn-outline px-8 py-4 text-lg">Contact Us</a>
+      </div>
+    </section>
+{% endblock %}

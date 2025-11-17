@@ -1,0 +1,19 @@
+/* Copied font-face declarations to match Tailwind font families used in the app */
+@font-face {font-family: 'roboto-bold'; font-style: normal; font-weight: 700; src: url('//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/roboto/v18/9_7S_tWeGDh5Pq3u05RVkltXRa8TVwTICgirnJhmVJw.woff2') format('woff2');}
+@font-face {font-family: 'roboto-bold'; font-style: normal; font-weight: 400; src: url('//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/roboto/v18/97uahxiqZRoncBaCEI3aW1tXRa8TVwTICgirnJhmVJw.woff2') format('woff2');}
+@font-face {font-family: 'roboto-bold'; font-style: italic; font-weight: 400; src: url('//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/roboto/v18/t6Nd4cfPRhZP44Q5QAjcC6g5eI2G47JWe0-AuFtD150.woff2') format('woff2');}
+@font-face {font-family: 'roboto-bold'; font-style: italic; font-weight: 700; src: url('//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/roboto/v18/bmC0pGMXrhphrZJmniIZpag5eI2G47JWe0-AuFtD150.woff2') format('woff2');}
+@font-face {font-family: 'roboto'; font-style: normal; font-weight: 700; src: url('//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/roboto/v32/KFOlCnqEu92Fr1MmWUlfCxc4AMP6lbBP.woff2') format('woff2');}
+@font-face {font-family: 'roboto'; font-style: italic; font-weight: 400; src: url('//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/roboto/v32/KFOkCnqEu92Fr1Mu51xHIzIXKMnyrYk.woff2') format('woff2');}
+@font-face {font-family: 'roboto'; font-style: normal; font-weight: 400; src: url('//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/roboto/v32/KFOmCnqEu92Fr1Mu7WxKKTU1Kvnz.woff2') format('woff2');}
+@font-face {font-family: 'roboto'; font-style: italic; font-weight: 700; src: url('//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/roboto/v32/KFOjCnqEu92Fr1Mu51TzBic1CsTYl4BOQ3o.woff2') format('woff2');}
+@font-face {font-family: 'roboto'; font-style: normal; font-weight: 700; src: url('//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/roboto/v32/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2') format('woff2');}
+@font-face {font-family: 'roboto'; font-style: italic; font-weight: 400; src: url('//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/roboto/v32/KFOkCnqEu92Fr1Mu51xIIzIXKMny.woff2') format('woff2');}
+@font-face {font-family: 'roboto'; font-style: normal; font-weight: 400; src: url('//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/roboto/v32/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2') format('woff2');}
+
+:root{
+  --font-heading: 'roboto-bold', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  --font-paragraph: 'roboto', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+html{ font-family: var(--font-paragraph); }

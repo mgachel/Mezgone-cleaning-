@@ -1,0 +1,165 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Mezgone Cleaning Services{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { heading: 'roboto-bold', paragraph: 'roboto' },
+          colors: {
+            'light-blue': '#E1F5FE',
+            'light-green': '#E8F5E9',
+            aqua: '#B2EBF2',
+            destructive: '#F44336',
+            'destructive-foreground': '#FFFFFF',
+            background: '#FFFFFF',
+            secondary: '#81C784',
+            foreground: '#212121',
+            'secondary-foreground': '#FFFFFF',
+            'primary-foreground': '#FFFFFF',
+            primary: '#03A9F4',
+          },
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="{% static 'css/vanilla.css' %}" />
+  <script defer src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="{% static 'js/main.js' %}"></script>
+  {% block head %}{% endblock %}
+</head>
+<body class="bg-white text-foreground">
+  <!-- Header -->
+  <header class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-[100rem] mx-auto px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="{% url 'home' %}" class="flex items-center">
+          <div class="text-2xl font-heading text-primary font-bold">Mezgone</div>
+          <div class="ml-2 text-sm font-paragraph text-foreground/70">Cleaning Services</div>
+        </a>
+        {% with url_name=request.resolver_match.url_name %}
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="{% url 'home' %}" class="font-paragraph {% if url_name == 'home' %}text-primary font-medium{% else %}text-foreground/70 hover:text-primary transition-colors{% endif %}">Home</a>
+          <a href="{% url 'services' %}" class="font-paragraph {% if url_name == 'services' %}text-primary font-medium{% else %}text-foreground/70 hover:text-primary transition-colors{% endif %}">Services</a>
+          <a href="{% url 'about' %}" class="font-paragraph {% if url_name == 'about' %}text-primary font-medium{% else %}text-foreground/70 hover:text-primary transition-colors{% endif %}">About</a>
+          <a href="{% url 'contact' %}" class="font-paragraph {% if url_name == 'contact' %}text-primary font-medium{% else %}text-foreground/70 hover:text-primary transition-colors{% endif %}">Contact</a>
+        </nav>
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="{% url 'booking' %}" class="btn btn-primary">Get Free Quote</a>
+          <a href="tel:5551234567" class="flex items-center text-foreground/70 hover:text-primary transition-colors">
+            <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+            <span class="font-paragraph">(555) 123-4567</span>
+          </a>
+        </div>
+        <button data-open-mobile class="md:hidden p-2 rounded hover:bg-light-blue transition-base" aria-label="Open menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+        {% endwith %}
+      </div>
+    </div>
+    <!-- Mobile Sheet -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/40 hidden"></div>
+    <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-full sm:w-80 bg-white shadow-xl z-50 p-6">
+      <div class="flex items-center justify-between pb-6 border-b">
+        <div class="text-xl font-heading text-primary font-bold">Mezgone Cleaning</div>
+        <button data-close-mobile class="p-2 rounded hover:bg-light-blue" aria-label="Close menu">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <nav class="py-6 space-y-4">
+        <a href="{% url 'home' %}" class="block py-3 px-4 rounded-lg font-paragraph bg-light-blue text-primary font-medium">Home</a>
+        <a href="{% url 'services' %}" class="block py-3 px-4 rounded-lg font-paragraph text-foreground/70 hover:bg-light-blue hover:text-primary">Services</a>
+        <a href="{% url 'about' %}" class="block py-3 px-4 rounded-lg font-paragraph text-foreground/70 hover:bg-light-blue hover:text-primary">About</a>
+        <a href="{% url 'contact' %}" class="block py-3 px-4 rounded-lg font-paragraph text-foreground/70 hover:bg-light-blue hover:text-primary">Contact</a>
+      </nav>
+      <div class="space-y-4 border-t pt-6">
+        <a href="{% url 'booking' %}" class="btn btn-primary w-full">Get Free Quote</a>
+        <a href="tel:5551234567" class="flex items-center justify-center py-3 text-foreground/70 hover:text-primary transition-colors">
+          <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+          <span class="font-paragraph">(555) 123-4567</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-foreground text-white">
+    <div class="max-w-[100rem] mx-auto px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <div class="text-2xl font-heading text-primary font-bold mb-4">Mezgone</div>
+          <p class="font-paragraph text-white/80 mb-6">Professional cleaning services you can trust. We're committed to excellence and customer satisfaction.</p>
+          <div class="space-y-2">
+            <div class="flex items-center text-white/70">
+              <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
+              <span class="font-paragraph">(555) 123-4567</span>
+            </div>
+            <div class="flex items-center text-white/70">
+              <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+              <span class="font-paragraph">info@mezgonecleaning.com</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-heading text-white mb-4">Our Services</h3>
+          <ul class="space-y-2">
+            <li><a href="{% url 'services' %}" class="font-paragraph text-white/70 hover:text-primary transition-colors">Residential Cleaning</a></li>
+            <li><a href="{% url 'services' %}" class="font-paragraph text-white/70 hover:text-primary transition-colors">Commercial Cleaning</a></li>
+            <li><a href="{% url 'services' %}" class="font-paragraph text-white/70 hover:text-primary transition-colors">Deep Cleaning</a></li>
+            <li><a href="{% url 'services' %}" class="font-paragraph text-white/70 hover:text-primary transition-colors">Move-in/Move-out</a></li>
+            <li><a href="{% url 'services' %}" class="font-paragraph text-white/70 hover:text-primary transition-colors">Post-construction</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-heading text-white mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="{% url 'home' %}" class="font-paragraph text-white/70 hover:text-primary transition-colors">Home</a></li>
+            <li><a href="{% url 'services' %}" class="font-paragraph text-white/70 hover:text-primary transition-colors">Services</a></li>
+            <li><a href="{% url 'about' %}" class="font-paragraph text-white/70 hover:text-primary transition-colors">About</a></li>
+            <li><a href="{% url 'contact' %}" class="font-paragraph text-white/70 hover:text-primary transition-colors">Contact</a></li>
+            <li><a href="{% url 'booking' %}" class="font-paragraph text-white/70 hover:text-primary transition-colors">Book Service</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-heading text-white mb-4">Contact Info</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <i data-lucide="map-pin" class="w-4 h-4 mr-2 mt-1 text-primary"></i>
+              <div class="font-paragraph text-white/70">
+                <p>Greater Metropolitan Area</p>
+                <p>Multiple Service Locations</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <i data-lucide="clock" class="w-4 h-4 mr-2 mt-1 text-primary"></i>
+              <div class="font-paragraph text-white/70">
+                <p>Mon-Fri: 8AM-6PM</p>
+                <p>Sat: 9AM-4PM</p>
+                <p>Sun: Closed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/20 mt-12 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="font-paragraph text-white/60 text-sm">© 2024 Mezgone Cleaning Services. All rights reserved.</p>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="{% url 'contact' %}" class="font-paragraph text-white/60 hover:text-primary transition-colors text-sm">Privacy Policy</a>
+            <a href="{% url 'contact' %}" class="font-paragraph text-white/60 hover:text-primary transition-colors text-sm">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

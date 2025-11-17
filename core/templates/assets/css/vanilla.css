@@ -1,0 +1,23 @@
+/* Minimal extras for the static site */
+@import url('./fonts.css');
+
+/***** Global helpers *****/
+.font-heading{ font-family: var(--font-heading); }
+.font-paragraph{ font-family: var(--font-paragraph); }
+
+/***** Components *****/
+/* Mobile sheet mimic */
+.mobile-menu{ display:none; }
+.mobile-menu.open{ display:block; }
+
+/* Card shadow polish when not using React components */
+.card{ border-width: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.06); border-radius: 0.75rem; background: #fff; }
+
+/* Simple button style for non-shadcn buttons where needed */
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5rem; font-weight:600; border-radius:.5rem; padding:.75rem 1rem; }
+.btn-primary{ background:#03A9F4; color:white; }
+.btn-outline{ border:1px solid #03A9F4; color:#03A9F4; }
+.btn-outline:hover{ background:#03A9F4; color:white; }
+
+/* Smooth transitions */
+.transition-base{ transition: all .2s ease-in-out; }

@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% block title %}Services • Mezgone Cleaning Services{% endblock %}
+{% block content %}
+  <!-- Header section -->
+  <section class="py-24 px-8 bg-gradient-to-br from-light-blue to-aqua text-center">
+    <div class="max-w-[100rem] mx-auto">
+      <h1 class="text-5xl font-heading text-foreground mb-6">Our Cleaning Services</h1>
+      <p class="text-xl font-paragraph text-foreground/80 max-w-3xl mx-auto">From residential homes to commercial spaces, we provide comprehensive cleaning solutions tailored to your specific needs and schedule.</p>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-24 px-8 bg-white">
+    <div class="max-w-[100rem] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Residential -->
+      <div class="card hover:shadow-xl transition-shadow duration-300">
+        <div class="p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-16 h-16 bg-light-blue rounded-full flex items-center justify-center flex-shrink-0">
+              <i data-lucide="home" class="w-8 h-8 text-primary"></i>
+            </div>
+            <h3 class="text-2xl font-heading text-foreground">Residential Cleaning</h3>
+          </div>
+          <p class="font-paragraph text-foreground/70 text-lg mb-6">Professional home cleaning services for busy families and individuals.</p>
+          <div class="mb-8">
+            <h4 class="text-lg font-heading text-foreground mb-4">What's Included:</h4>
+            <div class="grid grid-cols-1 gap-3">
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Dusting, vacuuming, mopping</span></div>
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Bathroom and kitchen cleaning</span></div>
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Bedroom and living area organization</span></div>
+            </div>
+          </div>
+          <a href="{% url 'booking' %}" class="btn btn-primary w-full">Book Home Cleaning</a>
+        </div>
+      </div>
+      <!-- Commercial -->
+      <div class="card hover:shadow-xl transition-shadow duration-300">
+        <div class="p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-16 h-16 bg-light-blue rounded-full flex items-center justify-center flex-shrink-0">
+              <i data-lucide="building" class="w-8 h-8 text-primary"></i>
+            </div>
+            <h3 class="text-2xl font-heading text-foreground">Office/Commercial Cleaning</h3>
+          </div>
+          <p class="font-paragraph text-foreground/70 text-lg mb-6">Comprehensive cleaning solutions for offices, retail spaces, and commercial buildings.</p>
+          <div class="mb-8">
+            <h4 class="text-lg font-heading text-foreground mb-4">What's Included:</h4>
+            <div class="grid grid-cols-1 gap-3">
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Desk cleaning, floor maintenance</span></div>
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Restroom sanitization, trash removal</span></div>
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Window cleaning, conference room setup</span></div>
+            </div>
+          </div>
+          <a href="{% url 'booking' %}" class="btn btn-primary w-full">Get Commercial Quote</a>
+        </div>
+      </div>
+      <!-- Deep -->
+      <div class="card hover:shadow-xl transition-shadow duration-300">
+        <div class="p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-16 h-16 bg-light-blue rounded-full flex items-center justify-center flex-shrink-0">
+              <i data-lucide="sparkles" class="w-8 h-8 text-primary"></i>
+            </div>
+            <h3 class="text-2xl font-heading text-foreground">Deep Cleaning</h3>
+          </div>
+          <p class="font-paragraph text-foreground/70 text-lg mb-6">Thorough, detailed cleaning service that reaches every corner of your space.</p>
+          <div class="mb-8">
+            <h4 class="text-lg font-heading text-foreground mb-4">What's Included:</h4>
+            <div class="grid grid-cols-1 gap-3">
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Baseboards, light fixtures</span></div>
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Inside appliances, cabinet fronts</span></div>
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Detailed bathroom scrubbing, carpet deep clean</span></div>
+            </div>
+          </div>
+          <a href="{% url 'booking' %}" class="btn btn-primary w-full">Schedule Deep Clean</a>
+        </div>
+      </div>
+      <!-- Move -->
+      <div class="card hover:shadow-xl transition-shadow duration-300">
+        <div class="p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-16 h-16 bg-light-blue rounded-full flex items-center justify-center flex-shrink-0">
+              <i data-lucide="truck" class="w-8 h-8 text-primary"></i>
+            </div>
+            <h3 class="text-2xl font-heading text-foreground">Move-in/Move-out Cleaning</h3>
+          </div>
+          <p class="font-paragraph text-foreground/70 text-lg mb-6">Complete cleaning service for moving transitions, ensuring spaces are move-ready.</p>
+          <div class="mb-8">
+            <h4 class="text-lg font-heading text-foreground mb-4">What's Included:</h4>
+            <div class="grid grid-cols-1 gap-3">
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">All rooms deep clean, appliance cleaning</span></div>
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Closet cleaning, garage cleaning</span></div>
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Final walkthrough</span></div>
+            </div>
+          </div>
+          <a href="{% url 'booking' %}" class="btn btn-primary w-full">Book Move Clean</a>
+        </div>
+      </div>
+      <!-- Construction -->
+      <div class="card hover:shadow-xl transition-shadow duration-300">
+        <div class="p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-16 h-16 bg-light-blue rounded-full flex items-center justify-center flex-shrink-0">
+              <i data-lucide="hard-hat" class="w-8 h-8 text-primary"></i>
+            </div>
+            <h3 class="text-2xl font-heading text-foreground">Post-construction Cleaning</h3>
+          </div>
+          <p class="font-paragraph text-foreground/70 text-lg mb-6">Specialized cleaning after construction or renovation projects.</p>
+          <div class="mb-8">
+            <h4 class="text-lg font-heading text-foreground mb-4">What's Included:</h4>
+            <div class="grid grid-cols-1 gap-3">
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Dust removal, debris cleanup</span></div>
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Window washing, floor polishing</span></div>
+              <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-secondary mt-0.5"></i><span class="font-paragraph text-foreground/80">Fixture cleaning, final detailing</span></div>
+            </div>
+          </div>
+          <a href="{% url 'booking' %}" class="btn btn-primary w-full">Get Construction Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Our Services -->
+  <section class="py-24 px-8 bg-light-green">
+    <div class="max-w-[100rem] mx-auto text-center mb-16">
+      <h2 class="text-4xl font-heading text-foreground mb-6">Why Choose Our Services?</h2>
+      <p class="text-lg font-paragraph text-foreground/70 max-w-3xl mx-auto">We're committed to delivering exceptional results with every cleaning service we provide.</p>
+    </div>
+    <div class="max-w-[100rem] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+          <i data-lucide="check-circle" class="w-8 h-8 text-primary"></i>
+        </div>
+        <h3 class="text-xl font-heading text-foreground mb-4">Quality Guaranteed</h3>
+        <p class="font-paragraph text-foreground/70">We stand behind our work with a 100% satisfaction guarantee. If you're not happy, we'll make it right.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+          <i data-lucide="sparkles" class="w-8 h-8 text-primary"></i>
+        </div>
+        <h3 class="text-xl font-heading text-foreground mb-4">Professional Equipment</h3>
+        <p class="font-paragraph text-foreground/70">We use industry-leading equipment and eco-friendly products for the best results every time.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+          <i data-lucide="building" class="w-8 h-8 text-primary"></i>
+        </div>
+        <h3 class="text-xl font-heading text-foreground mb-4">Flexible Scheduling</h3>
+        <p class="font-paragraph text-foreground/70">We work around your schedule with flexible booking options and reliable service times.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-8 bg-white text-center">
+    <div class="max-w-[100rem] mx-auto">
+      <h2 class="text-4xl font-heading text-foreground mb-6">Ready to Get Started?</h2>
+      <p class="text-lg font-paragraph text-foreground/70 mb-12 max-w-3xl mx-auto">Choose the service that's right for you and experience the Mezgone difference. Get your free quote today!</p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="{% url 'booking' %}" class="btn btn-primary px-8 py-4 text-lg">Get Free Quote</a>
+        <a href="{% url 'contact' %}" class="btn btn-outline px-8 py-4 text-lg">Contact Us</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

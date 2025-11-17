@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% block title %}Contact • Mezgone Cleaning Services{% endblock %}
+{% block content %}
+  <!-- Header section -->
+  <section class="py-24 px-8 bg-gradient-to-br from-light-blue to-aqua text-center">
+    <div class="max-w-[100rem] mx-auto">
+      <h1 class="text-5xl font-heading text-foreground mb-6">Contact Mezgone Cleaning</h1>
+      <p class="text-xl font-paragraph text-foreground/80 max-w-3xl mx-auto">We're here to help! Get in touch with our friendly team for questions, quotes, or to schedule your cleaning service.</p>
+    </div>
+  </section>
+
+  <!-- Info + Form -->
+  <section class="py-24 px-8 bg-white">
+    <div class="max-w-[100rem] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <!-- Contact Information -->
+      <div>
+        <h2 class="text-3xl font-heading text-foreground mb-8">Get in Touch</h2>
+        <div class="space-y-8">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-light-blue rounded-full flex items-center justify-center flex-shrink-0"><i data-lucide="phone" class="w-6 h-6 text-primary"></i></div>
+            <div><h3 class="text-xl font-heading text-foreground mb-2">Phone</h3><p class="font-paragraph text-foreground/70 mb-1">(555) 123-4567</p><p class="text-sm font-paragraph text-foreground/60">Available Mon-Fri 8AM-6PM, Sat 9AM-4PM</p></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-light-green rounded-full flex items-center justify-center flex-shrink-0"><i data-lucide="mail" class="w-6 h-6 text-primary"></i></div>
+            <div><h3 class="text-xl font-heading text-foreground mb-2">Email</h3><p class="font-paragraph text-foreground/70 mb-1">info@mezgonecleaning.com</p><p class="text-sm font-paragraph text-foreground/60">We respond within 24 hours</p></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-aqua rounded-full flex items-center justify-center flex-shrink-0"><i data-lucide="map-pin" class="w-6 h-6 text-primary"></i></div>
+            <div><h3 class="text-xl font-heading text-foreground mb-2">Service Areas</h3><p class="font-paragraph text-foreground/70 mb-1">Greater Metropolitan Area</p><p class="text-sm font-paragraph text-foreground/60">See full list of service areas below</p></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-light-blue rounded-full flex items-center justify-center flex-shrink-0"><i data-lucide="clock" class="w-6 h-6 text-primary"></i></div>
+            <div><h3 class="text-xl font-heading text-foreground mb-2">Business Hours</h3><div class="font-paragraph text-foreground/70 space-y-1"><p>Monday - Friday: 8:00 AM - 6:00 PM</p><p>Saturday: 9:00 AM - 4:00 PM</p><p>Sunday: Closed</p></div></div>
+          </div>
+        </div>
+      </div>
+      <!-- Form -->
+      <div>
+        <div class="card">
+          <div class="p-8">
+            <h2 class="text-2xl font-heading text-foreground flex items-center gap-3 mb-6"><i data-lucide="message-square" class="w-6 h-6 text-primary"></i> Send Us a Message</h2>
+            {% if messages %}
+              <div class="mb-4">
+                {% for message in messages %}
+                  <div class="p-3 rounded-md bg-light-green text-foreground/90">{{ message }}</div>
+                {% endfor %}
+              </div>
+            {% endif %}
+            {% if success %}
+              <div class="text-center py-12">
+                <div class="w-24 h-24 bg-light-green rounded-full flex items-center justify-center mx-auto mb-8"><i data-lucide="check-circle" class="w-12 h-12 text-secondary"></i></div>
+                <h3 class="text-3xl font-heading mb-4">Message Sent!</h3>
+                <p class="font-paragraph text-foreground/80 mb-6">Thank you for contacting us. We've received your message and will get back to you within 24 hours.</p>
+              </div>
+            {% else %}
+            <form id="contact-form" method="post" novalidate class="space-y-6">
+              {% csrf_token %}
+              {% if form.non_field_errors %}
+                <div class="p-3 rounded-md bg-red-50 text-red-700">{{ form.non_field_errors }}</div>
+              {% endif %}
+              <div class="space-y-2">
+                <label class="text-lg font-heading text-foreground" for="id_name">Full Name *</label>
+                {{ form.name }}
+                {{ form.name.errors }}
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-2">
+                  <label class="text-lg font-heading text-foreground" for="id_email">Email Address *</label>
+                  {{ form.email }}
+                  {{ form.email.errors }}
+                </div>
+                <div class="space-y-2">
+                  <label class="text-lg font-heading text-foreground" for="id_phone">Phone Number</label>
+                  {{ form.phone }}
+                  {{ form.phone.errors }}
+                </div>
+              </div>
+              <div class="space-y-2">
+                <label class="text-lg font-heading text-foreground" for="id_subject">Subject</label>
+                {{ form.subject }}
+                {{ form.subject.errors }}
+              </div>
+              <div class="space-y-2">
+                <label class="text-lg font-heading text-foreground" for="id_message">Message *</label>
+                {{ form.message }}
+                {{ form.message.errors }}
+              </div>
+              <button type="submit" class="btn btn-primary w-full text-lg py-4">Send Message</button>
+            </form>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas -->
+  <section class="py-24 px-8 bg-light-blue">
+    <div class="max-w-[100rem] mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-heading text-foreground mb-6">Service Areas</h2>
+        <p class="text-lg font-paragraph text-foreground/70 max-w-3xl mx-auto">We proudly serve the greater metropolitan area and surrounding communities. Don't see your area listed? Contact us to check availability.</p>
+      </div>
+      <div class="card bg-white p-8">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div class="flex items-center gap-2 p-3 bg-light-green rounded-lg"><i data-lucide="check-circle" class="w-4 h-4 text-secondary"></i><span class="font-paragraph text-foreground text-sm">Downtown</span></div>
+          <div class="flex items-center gap-2 p-3 bg-light-green rounded-lg"><i data-lucide="check-circle" class="w-4 h-4 text-secondary"></i><span class="font-paragraph text-foreground text-sm">Midtown</span></div>
+          <div class="flex items-center gap-2 p-3 bg-light-green rounded-lg"><i data-lucide="check-circle" class="w-4 h-4 text-secondary"></i><span class="font-paragraph text-foreground text-sm">Uptown</span></div>
+          <div class="flex items-center gap-2 p-3 bg-light-green rounded-lg"><i data-lucide="check-circle" class="w-4 h-4 text-secondary"></i><span class="font-paragraph text-foreground text-sm">East Side</span></div>
+          <div class="flex items-center gap-2 p-3 bg-light-green rounded-lg"><i data-lucide="check-circle" class="w-4 h-4 text-secondary"></i><span class="font-paragraph text-foreground text-sm">West Side</span></div>
+          <div class="flex items-center gap-2 p-3 bg-light-green rounded-lg"><i data-lucide="check-circle" class="w-4 h-4 text-secondary"></i><span class="font-paragraph text-foreground text-sm">North Hills</span></div>
+          <div class="flex items-center gap-2 p-3 bg-light-green rounded-lg"><i data-lucide="check-circle" class="w-4 h-4 text-secondary"></i><span class="font-paragraph text-foreground text-sm">South Bay</span></div>
+          <div class="flex items-center gap-2 p-3 bg-light-green rounded-lg"><i data-lucide="check-circle" class="w-4 h-4 text-secondary"></i><span class="font-paragraph text-foreground text-sm">Riverside</span></div>
+          <div class="flex items-center gap-2 p-3 bg-light-green rounded-lg"><i data-lucide="check-circle" class="w-4 h-4 text-secondary"></i><span class="font-paragraph text-foreground text-sm">Oakwood</span></div>
+          <div class="flex items-center gap-2 p-3 bg-light-green rounded-lg"><i data-lucide="check-circle" class="w-4 h-4 text-secondary"></i><span class="font-paragraph text-foreground text-sm">Maplewood</span></div>
+        </div>
+        <div class="mt-8 text-center">
+          <p class="font-paragraph text-foreground/70 mb-4">Don't see your area? We're expanding our service coverage regularly.</p>
+          <a class="btn btn-outline" href="{% url 'contact' %}">Check Service Availability</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section (placeholder) -->
+  <section class="py-24 px-8 bg-white">
+    <div class="max-w-[100rem] mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-heading text-foreground mb-6">Find Us</h2>
+        <p class="text-lg font-paragraph text-foreground/70 max-w-3xl mx-auto">Our service area covers a wide range of communities. We're committed to bringing professional cleaning services to your neighborhood.</p>
+      </div>
+      <div class="card overflow-hidden">
+        <div class="aspect-video bg-gradient-to-br from-light-blue to-aqua flex items-center justify-center">
+          <div class="text-center">
+            <i data-lucide="map-pin" class="w-16 h-16 text-primary mx-auto mb-4"></i>
+            <h3 class="text-2xl font-heading text-foreground mb-2">Interactive Map</h3>
+            <p class="font-paragraph text-foreground/70 max-w-md mx-auto">Google Maps integration would be displayed here showing our service coverage area and office location.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency Contact -->
+  <section class="py-24 px-8 bg-light-green text-center">
+    <div class="max-w-[100rem] mx-auto">
+      <h2 class="text-3xl font-heading text-foreground mb-6">Need Immediate Assistance?</h2>
+      <p class="text-lg font-paragraph text-foreground/70 mb-8 max-w-3xl mx-auto">For urgent cleaning needs or emergency situations, don't hesitate to call us directly. We'll do our best to accommodate rush requests.</p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="tel:5551234567" class="btn btn-primary px-8 py-4 text-lg"><i data-lucide="phone" class="w-5 h-5 mr-2"></i>Call Now: (555) 123-4567</a>
+        <a href="mailto:info@mezgonecleaning.com" class="btn btn-outline px-8 py-4 text-lg"><i data-lucide="mail" class="w-5 h-5 mr-2"></i>Email Us</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Ensure Lucide icons render after Django updates DOM on server render
+    if (window.lucide) window.lucide.createIcons();
+  </script>
+{% endblock %}
