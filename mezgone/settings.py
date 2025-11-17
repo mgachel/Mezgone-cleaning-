@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-import os
-import dj_database_url
+import os 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,22 +21,39 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# Read from env in production; fallback for local dev only
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-!owur-9%^f4b&2q9uot*6^5rnc$s2oy2v*k2pzm()j&7u5rd3v')
+SECRET_KEY = 'django-insecure-!owur-9%^f4b&2q9uot*6^5rnc$s2oy2v*k2pzm()j&7u5rd3v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+DEBUG = True
+
+ALLOWED_HOSTS = []
 
 allowed_hosts_env = os.getenv('ALLOWED_HOSTS')
-if allowed_hosts_env:
-    ALLOWED_HOSTS = [h.strip() for h in allowed_hosts_env.split(',') if h.strip()]
-else:
-    render_host = os.getenv('RENDER_EXTERNAL_HOSTNAME')
-    ALLOWED_HOSTS = [render_host] if render_host else []
+allowed_hosts_set = set()
 
-# Trust the Render domain for CSRF if present
-csrf_origin = os.getenv('RENDER_EXTERNAL_HOSTNAME')
-CSRF_TRUSTED_ORIGINS = [f"https://{csrf_origin}"] if csrf_origin else []
+# Include explicit env-provided hosts if present (ignore unresolved placeholders)
+if allowed_hosts_env:
+    for h in allowed_hosts_env.split(','):
+        h = h.strip()
+        if h and not h.startswith('${'):
+            allowed_hosts_set.add(h)
+
+# Always include Render-provided hostname when available
+render_host = os.getenv('RENDER_EXTERNAL_HOSTNAME')
+if render_host:
+    allowed_hosts_set.add(render_host)
+
+# Useful defaults for health checks and local access
+allowed_hosts_set.update({'127.0.0.1', 'localhost', '.onrender.com'})
+
+ALLOWED_HOSTS = sorted(allowed_hosts_set)
+
+# CSRF trusted origins: include exact Render hostname and wildcard for onrender.com
+csrf_trusted = set()
+if render_host:
+    csrf_trusted.add(f"https://{render_host}")
+csrf_trusted.add('https://*.onrender.com')
+CSRF_TRUSTED_ORIGINS = sorted(csrf_trusted)
 
 
 # Application definition
@@ -57,7 +73,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -90,18 +105,12 @@ WSGI_APPLICATION = 'mezgone.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASE_URL = os.getenv('DATABASE_URL')
-if DATABASE_URL:
-    DATABASES = {
-        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=True)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+}
 
 
 # Password validation
@@ -142,13 +151,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'core' / 'templates' / 'assets',  # serve css/js from templates/assets during development
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# WhiteNoise: serve compressed static files in production
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# Ensure request.is_secure() works behind a proxy (Render)
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
