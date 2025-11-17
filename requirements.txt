@@ -1,0 +1,21 @@
+# Core framework
+Django==5.1.1
+
+# Admin theme used in INSTALLED_APPS (import name: jazzmin)
+# Use a compatible range that supports Django 5.x
+django-jazzmin>=3.0,<4.0
+
+# Static files in production
+whitenoise>=6.7,<7.0
+
+# WSGI server for production
+gunicorn>=21.2,<22.0
+
+# Database URL parser
+dj-database-url>=2.2,<3.0
+
+# PostgreSQL driver for Render Postgres
+psycopg2-binary>=2.9,<3.0
+
+# Timezone database for Windows (recommended when using zoneinfo)
+tzdata; sys_platform == "win32"

@@ -1,0 +1,31 @@
+databases:
+  - name: mezgone-db
+    plan: free
+
+services:
+  - type: web
+    name: mezgone-web
+    env: python
+    plan: free
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn mezgone.wsgi:application
+    postDeployCommand: python manage.py migrate --noinput
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.6
+      - key: DJANGO_SETTINGS_MODULE
+        value: mezgone.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: ${RENDER_EXTERNAL_HOSTNAME}
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mezgone-db
+          property: connectionString
+    healthCheckPath: /
