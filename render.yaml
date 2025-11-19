@@ -10,7 +10,8 @@ services:
     buildCommand: |
       pip install --upgrade pip
       pip install -r requirements.txt
-      python manage.py collectstatic --noinput
+      rm -rf staticfiles
+      python manage.py collectstatic --noinput --clear
     startCommand: gunicorn mezgone.wsgi:application
     postDeployCommand: python manage.py migrate --noinput
     envVars:

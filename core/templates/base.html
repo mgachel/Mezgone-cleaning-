@@ -28,7 +28,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="{% static 'css/vanilla.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/vanilla.css' %}?v=2" />
   <!-- Fallback inline styles ensure critical mobile-menu hidden state even if CSS fails to load -->
   <style>
     #mobile-menu{display:none;}
@@ -36,7 +36,7 @@
     #mobile-overlay.hidden{display:none;}
   </style>
   <script defer src="https://unpkg.com/lucide@latest"></script>
-  <script defer src="{% static 'js/main.js' %}"></script>
+  <script defer src="{% static 'js/main.js' %}?v=2"></script>
   {% block head %}{% endblock %}
 </head>
 <body class="bg-white text-foreground">
