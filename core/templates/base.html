@@ -29,6 +29,12 @@
     }
   </script>
   <link rel="stylesheet" href="{% static 'css/vanilla.css' %}" />
+  <!-- Fallback inline styles ensure critical mobile-menu hidden state even if CSS fails to load -->
+  <style>
+    #mobile-menu{display:none;}
+    #mobile-menu.open{display:block;}
+    #mobile-overlay.hidden{display:none;}
+  </style>
   <script defer src="https://unpkg.com/lucide@latest"></script>
   <script defer src="{% static 'js/main.js' %}"></script>
   {% block head %}{% endblock %}
@@ -64,7 +70,7 @@
     </div>
     <!-- Mobile Sheet -->
     <div id="mobile-overlay" class="fixed inset-0 bg-black/40 hidden"></div>
-    <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-full sm:w-80 bg-white shadow-xl z-50 p-6">
+  <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-full sm:w-80 bg-white shadow-xl z-50 p-6" aria-hidden="true">
       <div class="flex items-center justify-between pb-6 border-b">
         <div class="text-xl font-heading text-primary font-bold">Mezgone Cleaning</div>
         <button data-close-mobile class="p-2 rounded hover:bg-light-blue" aria-label="Close menu">
