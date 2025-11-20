@@ -173,8 +173,20 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Simplified: Let WhiteNoise middleware handle compression automatically
-# No STORAGES needed - WhiteNoise works via middleware in Django 5.x
+# WhiteNoise configuration - serve static files directly via middleware
+WHITENOISE_USE_FINDERS = True  # Serve from STATICFILES_DIRS in addition to STATIC_ROOT
+WHITENOISE_AUTOREFRESH = DEBUG  # Auto-reload in development
+WHITENOISE_SKIP_COMPRESS_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'zip', 'gz', 'tgz', 'bz2', 'tbz', 'xz', 'br', 'swf', 'flv', 'woff', 'woff2']
+
+# Django 5.x STORAGES configuration (REQUIRED for WhiteNoise to work)
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
 
 # Ensure request.is_secure() works behind a proxy (Render)
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
