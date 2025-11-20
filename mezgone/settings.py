@@ -173,16 +173,8 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# WhiteNoise: serve static files in production
-# Use CompressedStaticFilesStorage instead of Manifest to avoid file not found errors
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
-    },
-}
+# Simplified: Let WhiteNoise middleware handle compression automatically
+# No STORAGES needed - WhiteNoise works via middleware in Django 5.x
 
 # Ensure request.is_secure() works behind a proxy (Render)
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

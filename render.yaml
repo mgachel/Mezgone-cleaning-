@@ -12,6 +12,8 @@ services:
       pip install -r requirements.txt
       rm -rf staticfiles
       python manage.py collectstatic --noinput --clear
+      echo "=== Collected static files ==="
+      ls -la staticfiles/css/ || echo "No CSS directory"
     startCommand: gunicorn mezgone.wsgi:application
     postDeployCommand: python manage.py migrate --noinput
     envVars:
