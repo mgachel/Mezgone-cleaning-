@@ -55,18 +55,6 @@ if render_host:
 csrf_trusted.add('https://*.onrender.com')
 CSRF_TRUSTED_ORIGINS = sorted(csrf_trusted)
 
-# Useful defaults for health checks and local access
-allowed_hosts_set.update({'127.0.0.1', 'localhost', '.onrender.com'})
-
-ALLOWED_HOSTS = sorted(allowed_hosts_set)
-
-# CSRF trusted origins: include exact Render hostname and wildcard for onrender.com
-csrf_trusted = set()
-if render_host:
-    csrf_trusted.add(f"https://{render_host}")
-csrf_trusted.add('https://*.onrender.com')
-CSRF_TRUSTED_ORIGINS = sorted(csrf_trusted)
-
 
 # Application definition
 
